@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman!</title>
+</head>
+<body>
+    <script>
+        var words = [
+            "javascript",
+            "monkey",
+            "amazing",
+            "pancake",
+            "jump",
+            "afternoon",
+            "cookie",
+            "game",
+            "hangman"
+        ];
+
+        // Get a random word for the 'words' array
+        // 'Math.floor(Math.random()' generats a random number between 0 and 1; '*words.length' multiplies the random int by the length of words
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        // Create an emtpy array to store the letters
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        var remainingLetters = word.length;
+
+        // Game loop
+        while (remainingLetters > 0) {
+            // Show the player their progress
+            alert(answerArray.join(" "));
+            // Take input from the player
+            // Ensure user input is a single character
+            var guess = prompt("Guess a letter, or click 'Cancel' to stop playing.").toLowerCase()
+            if (guess === null) {
+                // Exit the game loop
+                break;
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.")
+            } else {
+                // Update the game state with the guess
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess) {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    } 
+                }
+            }
+        }
+        // Show the answer and congraulate the player
+        alert(answerArray.join(" "));
+        alert("Good job! The answer was " + word);
+    </script>
+</body>
+</html>

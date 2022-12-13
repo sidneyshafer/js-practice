@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Programming</title>
+</head>
+<body>
+    <h1 id="heading">Hello World!</h1>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        var leftOffset = 0;
+
+        var moveHeading = function () {
+            // leftOffset -- how far it is from the left side of the screen
+            // .offset() takes either left or top property
+            $("#heading").offset({ left: leftOffset });
+
+            leftOffset++;
+
+            if (leftOffset > 200 ) {
+                leftOffset = 0;
+            }
+        };
+
+        // call set interval and pass in the moveHeading function
+        // interate every 30 milliseconds
+        setInterval(moveHeading, 30)
+    </script>
+
+</body>
+</html>

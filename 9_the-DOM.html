@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing with the DOM</title>
+</head>
+<body>
+    <h1 id="main-heading">Hello World!</h1>
+    <h1 id="main-heading2"></h1>
+
+    <!-- Load jQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        // var headingElement = document.getElementById("main-heading");
+        // console.log(headingElement.innerHTML);
+        var newHeadingText = prompt("Please provide a new heading:");
+        // headingElement.innerHTML = newHeadingText;
+        // console.log(newHeadingText);
+
+        // '$' function takes one argument, called a selector string. Tells jQuery which elements to select from the DOM tree
+        $("#main-heading").text(newHeadingText);
+
+        // CREATING NEW ELEMENTS WITH JQUERY
+        for (i = 0; i < 3; i++) {
+            var hobby = prompt("Tell me some of your hobbies!");
+            $("body").append("<p>" + hobby + "</p>");
+        };
+
+        // slideUp() and slideDown()
+        $("p").slideUp(1000).slideDown(1000);
+
+        // ANIMATING ELEMENTS: fadeOut()
+        // h1 fades out over 3 seconds after text is loaded
+        $("#main-heading").fadeOut(3000);
+
+        // Chaining jQuery Animations
+        $("#main-heading2").text("Chained Animation").fadeOut(3000).fadeIn(3000);
+    </script>
+</body>
+</html>

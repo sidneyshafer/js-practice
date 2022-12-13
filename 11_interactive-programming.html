@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Programming</title>
+</head>
+<body>
+    <script>
+        var timeUp = function () {
+            alert("Times up!");
+        };
+        
+        // Delaying code with setTimeout()
+        // returns a timeout ID
+        setTimeout(timeUp, 3000);
+
+        // Canceling a timeout
+        var doHomeworkAlarm = function () {
+            alert("Hey! You need to do your homework!");
+        };
+
+        var timeoutId = setTimeout(doHomeworkAlarm, 7000);
+        // clearTimeout(timeoutId); --> does not display
+
+        // Calling code multiple times with setInterval()
+        // setInterval(func (the function to call every interval), interval (the number of milliseconds to wait between each call))
+        var counter = 5;
+        var printMessage = function () {
+            console.log("You have been staring at your console for " + counter + " seconds.");
+            counter += 5;
+        };
+        var intervalId = setInterval(printMessage, 5000);
+        // clearInterval(intervalId); // -- > to stop interval
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt, Confirm, and Alert</title>
+</head>
+<body>
+    <script>
+        // Prompt()
+        var name = prompt("What's your name?");
+        console.log("Hello " + name)
+
+        // confirm()
+        /* 
+        answer to confirm() is returned as a boolean value
+        'OK' = true; 'Cancel' = false
+        */
+        var likesCats = confirm("Do you like cats?")
+        if (likesCats) {
+            console.log("You're a cool cat!")
+        } else {
+            console.log("Yeah, that's fine. You're still cool!")
+        };
+
+        // alert()
+        var alert = alert("JavaScript is cool!")
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt</title>
+</head>
+<body>
+    <h1 id="heading">Find the buried treasure!</h1>
+
+    <img src="https://images.unsplash.com/photo-1554852446-219205b33bbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=502&q=80" id="map" width="400" height="400">
+
+    <p id="distance"></p>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        // Game code
+        // image top-left pixels = { x: 0, y: 0 }
+        // image bottom-right pixels = { x: 399, y: 399 }
+
+        // Pick a random number between 0 and size for x and y
+        var getRandomNumber = function (size) {
+            return Math.floor(Math.random() * size);
+        };
+
+        // Calculate the distance between the click event and target (treasure)
+        var getDistance = function (event, target) {
+            var diffX = event.offsetX - target.x;
+            var diffY = event.offsetY - target.y;
+            return Math.sqrt((diffX * diffX) + (diffY * diffY));
+        };
+
+        // Get a string representation of the distance
+        // to tell the player how close they are to the treasure
+        var getDistanceHint = function (distance) {
+            if (distance < 10) {
+                return "Boiling hot!";
+            } else if (distance < 20) {
+                return "Really hot";
+            } else if (distance < 40) {
+                return "Hot";
+            } else if (distance < 80) {
+                return "Warm";
+            } else if (distance < 160) {
+                return "Cold";
+            } else if (distance < 320) {
+                return "Really cold";
+            } else {
+                return "Freezing!";
+            }
+        };
+
+        // Set variables (treasure coordinates)
+        var width = 400;
+        var height = 400;
+        // Set click handler count to 0
+        var clicks = 0;
+
+        // Create a random target location (treasure)
+        var target = {
+            x: getRandomNumber(width),
+            y: getRandomNumber(height)
+        };
+
+        // Click handler - called when the player clicks the treasure map
+        // Added to img element with id=map
+        $("#map").click(function (event) {
+            clicks++;
+
+            // Get distance between click event and target
+            var distance = getDistance(event, target);
+
+            // Convert distance to a hint
+            var distanceHint = getDistanceHint(distance);
+
+            // Update the #distance element with the current/new hint
+            $("#distance").text(distanceHint);
+
+            // If the click was less than 8, tell them they won
+            if (distance < 8) {
+                alert("Found the treasure in " + clicks + " clicks!");
+            };
+        });
+
+
+    </script>
+</body>
+</html>
